@@ -23,7 +23,7 @@ const Button = ({ ...props }: props) => {
           props.buttonType === "contained"
             ? "bg-button-background-primary text-button-foreground-primary"
             : "bg-transparent border border-border-primary text-foreground-primary"
-        } relative flex p-4 w-full items-center justify-center space-x-2 px-4 font-medium select-none rounded-2xl`,
+        } relative flex p-4 w-full items-center justify-center space-x-2 px-4 font-normal select-none rounded-2xl`,
         props.className
       )}
     >
