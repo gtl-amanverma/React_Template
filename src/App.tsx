@@ -13,6 +13,7 @@ import Compare from "./components/compare/component";
 import Tooltip from "./components/tooltip/component";
 import Checkbox from "./components/checkbox/component";
 import Badge from "./components/badge/component";
+import Contextmenu from "./components/context_menu/component";
 
 function App() {
   return (
@@ -75,7 +76,7 @@ function App() {
         />
       </div>
 
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center justify-center gap-4 mt-10">
         <Badge badgeType="default" label="default" />
         <Badge badgeType="outline" label="Outline" />
         <Badge badgeType="secondary" label="secondary" />
@@ -85,6 +86,10 @@ function App() {
         <Badge badgeType="digit-destructive" label="99" />
         <Badge badgeType="digit-outline" label="99+" />
         <Badge badgeType="digit-secondary" label="9" />
+      </div>
+
+      <div className="mt-10">
+        <Contextmenu triggerComponent={<div className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">Right click here</div>} />
       </div>
 
       <div className="flex flex-row items-center justify-center mb-10 w-full mt-10">
