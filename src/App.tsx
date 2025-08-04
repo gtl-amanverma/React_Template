@@ -11,6 +11,7 @@ import Carousel from "./components/carousel/component";
 import Codeblock from "./components/code_block/component";
 import Compare from "./components/compare/component";
 import Tooltip from "./components/tooltip/component";
+import Checkbox from "./components/checkbox/component";
 
 function App() {
   return (
@@ -63,6 +64,14 @@ function App() {
 
       <div className="mt-10">
         <Tooltip triggerComponent={<>Hover</>}>Hovered component</Tooltip>
+      </div>
+
+      <div>
+        <Checkbox
+          checkboxType="outlined"
+          label="Accept the terms and conditions!"
+          description="This is description."
+        />
       </div>
 
       <div className="flex flex-row items-center justify-center mb-10 w-full mt-10">
