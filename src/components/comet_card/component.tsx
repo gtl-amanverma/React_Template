@@ -4,7 +4,6 @@ import { cn } from "../../utils/cn";
 
 type props = {
   children?: React.ReactNode;
-  onClick?: () => void;
   className?: string;
 };
 
@@ -16,7 +15,6 @@ const CometCard = ({ ...props }: props) => {
           "p-4 rounded-xl bg-card-background-primary text-card-foreground-primary",
           props.className
         )}
-        onClick={props.onClick}
       >
         {props.children}
       </div>
