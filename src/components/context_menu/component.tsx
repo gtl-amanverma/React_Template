@@ -29,14 +29,19 @@ type props = {
   triggerComponent?: React.ReactNode;
 };
 
-
+interface TSubMenuItem {
+  id: string;
+  title: string;
+  icon: React.ReactNode;
+  disabled: boolean;
+}
 
 interface TSubMenuItemType {
-    id: string;
+  id: string;
   title: string;
   icon: React.ReactNode;
   subMenuItemType: "default" | "submenu";
-  menuOption: null,
+  menuOption: Array<TSubMenuItem> | null;
   disabled: boolean;
 }
 
@@ -85,7 +90,7 @@ const menuItems: Array<TMenuItemType> = [
         id: "2",
         title: "Menu 2",
         icon: <LucideAArrowDown />,
-        subMenuItemType: "submenu",
+        subMenuItemType: "default",
         menuOption: null,
         disabled: true,
       },
@@ -93,8 +98,21 @@ const menuItems: Array<TMenuItemType> = [
         id: "3",
         title: "Menu 3",
         icon: <HardDriveUpload />,
-        subMenuItemType: "default",
-        menuOption: null,
+        subMenuItemType: "submenu",
+        menuOption: [
+          {
+            id: "1",
+            title: "Sub menu 1",
+            icon: <PiIcon />,
+            disabled: false,
+          },
+          {
+            id: "2",
+            title: "Sub menu 2",
+            icon: <TvIcon />,
+            disabled: false,
+          },
+        ],
         disabled: false,
       },
     ],
@@ -125,12 +143,49 @@ const Contextmenu = ({ ...props }: props) => {
                   <ContextMenuSubContent className="w-44 bg-background-primary">
                     {item.subMenuItems?.map((subMenu, index) => {
                       return (
-                        <ContextMenuItem key={index} inset disabled={subMenu.disabled}>
-                          {subMenu.title}
-                          <ContextMenuShortcut>
-                            {subMenu.icon}
-                          </ContextMenuShortcut>
-                        </ContextMenuItem>
+                        <>
+                          {subMenu.subMenuItemType === "default" && (
+                            <ContextMenuItem
+                              key={index}
+                              inset
+                              disabled={subMenu.disabled}
+                            >
+                              {subMenu.title}
+                              <ContextMenuShortcut>
+                                {subMenu.icon}
+                              </ContextMenuShortcut>
+                            </ContextMenuItem>
+                          )}
+
+                          {subMenu.subMenuItemType === "submenu" && (
+                            <ContextMenuSub key={index}>
+                              <ContextMenuSubTrigger
+                                inset
+                                disabled={subMenu.disabled}
+                              >
+                                {subMenu.title}
+                              </ContextMenuSubTrigger>
+                              <ContextMenuSubContent className="w-44 bg-background-primary">
+                                {subMenu.menuOption?.map(
+                                  (submenuItem, index) => {
+                                    return (
+                                      <ContextMenuItem
+                                        key={index}
+                                        inset
+                                        disabled={submenuItem.disabled}
+                                      >
+                                        {submenuItem.title}
+                                        <ContextMenuShortcut>
+                                          {submenuItem.icon}
+                                        </ContextMenuShortcut>
+                                      </ContextMenuItem>
+                                    );
+                                  }
+                                )}
+                              </ContextMenuSubContent>
+                            </ContextMenuSub>
+                          )}
+                        </>
                       );
                     })}
                   </ContextMenuSubContent>
