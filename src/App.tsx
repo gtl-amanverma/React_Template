@@ -14,6 +14,8 @@ import Tooltip from "./components/tooltip/component";
 import Checkbox from "./components/checkbox/component";
 import Badge from "./components/badge/component";
 import Contextmenu from "./components/context_menu/component";
+import Popover from "./components/popover/component";
+import Radiogroup from "./components/radio_group/component";
 
 function App() {
   return (
@@ -89,7 +91,59 @@ function App() {
       </div>
 
       <div className="mt-10">
-        <Contextmenu triggerComponent={<div className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">Right click here</div>} />
+        <Popover
+          triggerComponent={
+            <div className="border w-32 h-32 flex items-center justify-center">
+              Click here
+            </div>
+          }
+        >
+          <div>Aman Verma</div>
+        </Popover>
+      </div>
+
+      <div className="mt-10">
+        <Radiogroup
+          isError={false}
+          defaultValue="2"
+          value="1"
+          options={[
+            {
+              id: "1",
+              title: "Radio option 1",
+              value: "1",
+              htmlFor: "1",
+              disabled: false,
+              isError: false,
+            },
+            {
+              id: "2",
+              title: "Radio option 2",
+              value: "2",
+              htmlFor: "2",
+              disabled: false,
+              isError: false,
+            },
+            {
+              id: "3",
+              title: "Radio option 3",
+              value: "3",
+              htmlFor: "3",
+              disabled: false,
+              isError: false,
+            },
+          ]}
+        />
+      </div>
+
+      <div className="mt-10">
+        <Contextmenu
+          triggerComponent={
+            <div className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+              Right click here
+            </div>
+          }
+        />
       </div>
 
       <div className="flex flex-row items-center justify-center mb-10 w-full mt-10">
