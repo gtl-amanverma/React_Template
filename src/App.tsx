@@ -9,11 +9,11 @@ import LoginTemplate from "./templates/public/login/template";
 function App() {
   return (
     <div className="w-screen h-screen flex items-center justify-center">
-      <DemoCode />
+      {/* <DemoCode /> */}
       {/* <BackgroundOne /> */}
       {/* <BackgroundTwo /> */}
       <BackgroundThree />
-      {/* <LoginTemplate /> */}
+      <LoginTemplate />
     </div>
   );
 }

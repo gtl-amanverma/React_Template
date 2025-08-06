@@ -1,37 +1,10 @@
 import React from 'react';
 import { motion } from "framer-motion";
-import * as z from "zod";
-import { Mail, Lock, LogIn } from "lucide-react";
+import { LogIn } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../../components/card/ui';
-import { Label } from '../../../components/label/ui';
 import { Input } from '../../../components/input/ui';
 import Button from '../../../components/button/component';
-
-const formSchema = z.object({
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  password: z.string().min(1, {
-    message: "Password is required.",
-  }),
-});
-
-const formVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+import { formVariants, itemVariants } from '../../../utils/motion_style';
 
 const LoginTemplate = () => {
   return (
